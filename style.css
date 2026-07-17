@@ -1,122 +1,68 @@
-body{
-    height: 100vh;
-    font-family: "Sofia", cursive;  
-    margin: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-background: #B34AA9;
-background: linear-gradient(90deg, rgba(179, 74, 169, 1) 0%, rgba(179, 74, 169, 1) 0%, rgba(207, 74, 161, 1) 100%);
-}
+/* below is the variable declaration for the vlaue that need to be use in the file color hasnt been picked up yet it up to you guys */
+:root {
+  --bg: #494049;
+  --bg2: #f5f5f5;
+  --bg3: #e5e5e5;
 
-*{
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
-}
+  --txt: #32f2ef;
+  --txt2: #6b7280;
+  --txtInv: #ffffff;
 
-.main{
-    background-color: white;
-    border-radius: 5px;
-    height: 400px;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-}
-#top{
-    margin:0px 20px;
-    text-align: center;
-    
+  --pri: #2563eb;
+  --priHov: #1d4ed8;
 
-}
-.but_log{
-    display: inline-flex;
-}
+  --sec: #10b981;
+  --secHov: #059669;
 
-#login{
-   width: 120px;
-    height: 40px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    font-size: 1em;
-    outline: none;
-    border: none;
-    color: white;
-    background: RGBA(156, 75, 173);
-    background: linear-gradient(45deg, rgb(158, 75, 175) 0%, rgba(228, 74, 152, 1) 100%);
-    
-    
-}
-#login:hover{
-    cursor: pointer;
-}
-#sign_up:hover{
-    cursor:pointer;
-}
-#bot>button:hover{
-    cursor:pointer; 
-}
-#sign_up{
-       width: 120px;
-    height: 40px;
-    font-size: 1em;
-    font-weight: 600;
-    background: transparent;
-    border: 0.5px rgb(209, 196, 196) solid;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    
-}
-#input{
-    margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  --acc: #f59e0b;
 
-}
+  --err: #ef4444;
+  --warn: #f59e0b;
+  --succ: #22c55e;
+  --info: #3b82f6;
 
-input{
-    height: 30px;
-    width: 80%;
-    position: relative;
-    left: 25px;
-    border: 0.5px rgb(209, 196, 196) solid;
-    border-radius: 5px;
+  --bd: #d1d5db;
+  --bd2: #9ca3af;
+
+  --shadow: rgba(0, 0, 0, 0.15);
+  --overlay: rgba(0, 0, 0, 0.5);
+
+  --rSm: 4px;
+  --rMd: 8px;
+  --rLg: 12px;
+  --rFull: 9999px;
+
+  --sp1: 4px;
+  --sp2: 8px;
+  --sp3: 12px;
+  --sp4: 16px;
+  --sp5: 24px;
+  --sp6: 32px;
+
+  --fsSm: 14px;
+  --fsMd: 16px;
+  --fsLg: 20px;
+  --fsXl: 28px;
+  --fsHero: 48px;
+
+  --fwReg: 400;
+  --fwMed: 500;
+  --fwBold: 700;
+
+  --trans: all 0.3s ease;
+
+  --navH: 70px;
+  --footerH: 100px;
+  --container: 1200px;
 }
-#input a{
-    font-size: 15px;
-    position: relative;
-    left: 30px;
-    color: rgb(219, 75, 154);
-    text-decoration: none;
-    
+* {
+  margin: 0px;
+  padding: 0px;
 }
-#bot{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+body {
+  background-color: var(--bg);
 }
-#bot button{
-    height: 40px;
-    width: 82%;
-    position: relative;
-    left: 25px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    color: white;
-    background: RGBA(156, 75, 173);
-    background: linear-gradient(45deg, rgb(158, 75, 175) 0%, rgba(228, 74, 152, 1) 100%);
-    
-}
-#bot p{
-    font-size: 1em;
-}
-#bot a{
-        color: rgb(219, 75, 154);
-    text-decoration: none;
+h1 {
+  color: var(--txt);
+  text-align: center;
 }
