@@ -1,4 +1,122 @@
-* {
-  margin: 0px;
-  padding: 0px;
+body{
+    height: 100vh;
+    font-family: "Sofia", cursive;  
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+background: #B34AA9;
+background: linear-gradient(90deg, rgba(179, 74, 169, 1) 0%, rgba(179, 74, 169, 1) 0%, rgba(207, 74, 161, 1) 100%);
+}
+
+*{
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
+}
+
+.main{
+    background-color: white;
+    border-radius: 5px;
+    height: 400px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+#top{
+    margin:0px 20px;
+    text-align: center;
+    
+
+}
+.but_log{
+    display: inline-flex;
+}
+
+#login{
+   width: 120px;
+    height: 40px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    border: none;
+    color: white;
+    background: RGBA(156, 75, 173);
+    background: linear-gradient(45deg, rgb(158, 75, 175) 0%, rgba(228, 74, 152, 1) 100%);
+    
+    
+}
+#login:hover{
+    cursor: pointer;
+}
+#sign_up:hover{
+    cursor:pointer;
+}
+#bot>button:hover{
+    cursor:pointer; 
+}
+#sign_up{
+       width: 120px;
+    height: 40px;
+    font-size: 1em;
+    font-weight: 600;
+    background: transparent;
+    border: 0.5px rgb(209, 196, 196) solid;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+}
+#input{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+input{
+    height: 30px;
+    width: 80%;
+    position: relative;
+    left: 25px;
+    border: 0.5px rgb(209, 196, 196) solid;
+    border-radius: 5px;
+}
+#input a{
+    font-size: 15px;
+    position: relative;
+    left: 30px;
+    color: rgb(219, 75, 154);
+    text-decoration: none;
+    
+}
+#bot{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+#bot button{
+    height: 40px;
+    width: 82%;
+    position: relative;
+    left: 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    color: white;
+    background: RGBA(156, 75, 173);
+    background: linear-gradient(45deg, rgb(158, 75, 175) 0%, rgba(228, 74, 152, 1) 100%);
+    
+}
+#bot p{
+    font-size: 1em;
+}
+#bot a{
+        color: rgb(219, 75, 154);
+    text-decoration: none;
 }
