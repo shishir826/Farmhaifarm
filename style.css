@@ -1,10 +1,10 @@
 /* below is the variable declaration for the vlaue that need to be use in the file color hasnt been picked up yet it up to you guys */
 :root {
-  --bg: #494049;
+  --bg: #f0ebf0;
   --bg2: #f5f5f5;
   --bg3: #e5e5e5;
 
-  --txt: #32f2ef;
+  --txt: #000000;
   --txt2: #6b7280;
   --txtInv: #ffffff;
 
@@ -65,4 +65,62 @@ body {
 h1 {
   color: var(--txt);
   text-align: center;
+}
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8%;
+  background: #2e7d32;
+}
+
+/* Logo */
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* Hover Effect */
+.nav-links li a:hover {
+  color: #c8e6c9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
 }
