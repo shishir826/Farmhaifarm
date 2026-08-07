@@ -1,15 +1,15 @@
-##### Starting OF Our Project
+### Starting OF Our Project
 
-### Team Member:###
+## Team Member:
 
-# 1.Shishir Ghimire
+### 1.Shishir Ghimire
 
-# 2. Sejal Prasai#
+### 2. Sejal Prasai
 
-# 3.Supriya Jha
+### 3.Supriya Jha
 
-# 4.Bibas Adhikari
+### 4.Bibas Adhikari
 
 #### PORJECT TITLE
 
-##### FARM FRESH
+# FARM FRESH
