@@ -1,28 +1,35 @@
-/* below is the variable declaration for the vlaue that need to be use in the file color hasnt been picked up yet it up to you guys */
 :root {
-  --bg: whitesmoke;
-  --bg2: #448f4c;
-  --bg3: #e5e5e5;
+  /* Backgrounds */
+  --bg: #f7f9f2; /* cream page background */
+  --bg2: #3a7d44; /* primary green (brand) */
+  --bg3: #e5e5e5; /* light neutral surface */
 
-  --txt: #000000;
-  --txt2: #6b7280;
-  --txtInv: #ffffff;
+  /* Text */
+  --txt: #22301f; /* charcoal, pairs with green better than pure black */
+  --txt2: #6b7280; /* muted secondary text */
+  --txtInv: #ffffff; /* text on dark/green backgrounds */
 
-  --pri: #2563eb;
-  --priHov: #1d4ed8;
+  /* Primary brand (green) */
+  --pri: #3a7d44;
+  --priHov: #2c5f35;
 
-  --sec: #10b981;
-  --secHov: #059669;
+  /* Secondary brand (soil brown) */
+  --sec: #8b5e3c;
+  --secHov: #6b4a2d;
 
-  --acc: #f59e0b;
+  /* Accent (harvest orange - CTAs only) */
+  --acc: #f2a649;
+  --accHov: #e0932f;
 
+  /* Semantic / functional */
   --err: #ef4444;
   --warn: #f59e0b;
   --succ: #22c55e;
   --info: #3b82f6;
 
-  --bd: #d1d5db;
-  --bd2: #9ca3af;
+  /* Borders */
+  --bd: #d8ded2;
+  --bd2: #b9c2ae;
 
   --shadow: rgba(0, 0, 0, 0.15);
   --overlay: rgba(0, 0, 0, 0.5);
@@ -56,10 +63,6 @@
   --container: 1200px;
 }
 
-/* ==========================
-      GLOBAL RESET
-========================== */
-
 * {
   margin: 0;
   padding: 0;
@@ -68,26 +71,20 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--txt);
 }
-
-/* ==========================
-          HEADER
-========================== */
 
 header {
   width: 100%;
 }
 
-/* ==========================
-          TOP BAR
-========================== */
-
 .top-bar {
   width: 100%;
   height: 38px;
 
-  background: #2e7d32;
-  color: white;
+  background: var(--priHov);
+  color: var(--txtInv);
 
   display: flex;
   justify-content: space-between;
@@ -95,10 +92,8 @@ header {
 
   padding: 0 8%;
 
-  font-size: 14px;
+  font-size: var(--fsSm);
 }
-
-/* left contact */
 
 .top-left {
   display: flex;
@@ -111,10 +106,8 @@ header {
   gap: 7px;
 }
 
-/* right track order */
-
 .top-right a {
-  color: white;
+  color: var(--txtInv);
   text-decoration: none;
 
   display: flex;
@@ -122,15 +115,11 @@ header {
   gap: 7px;
 }
 
-/* ==========================
-        MAIN HEADER
-========================== */
-
 #mainheader {
   width: 100%;
   height: 90px;
 
-  background: white;
+  background: var(--bg);
 
   display: flex;
   align-items: center;
@@ -138,21 +127,17 @@ header {
 
   padding: 0 8%;
 
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--bd);
 }
-
-/* Logo */
 
 .logo a {
   text-decoration: none;
 
   font-size: 32px;
-  font-weight: bold;
+  font-weight: var(--fwBold);
 
-  color: #2e7d32;
+  color: var(--pri);
 }
-
-/* Search */
 
 .search-bar {
   width: 45%;
@@ -164,13 +149,16 @@ header {
   width: 100%;
   height: 45px;
 
-  padding: 0 15px;
+  padding: 0 var(--sp4);
 
-  border: 2px solid #2e7d32;
+  border: 2px solid var(--pri);
 
-  border-radius: 8px 0 0 8px;
+  border-radius: var(--rMd) 0 0 var(--rMd);
 
   outline: none;
+
+  background: var(--txtInv);
+  color: var(--txt);
 }
 
 .search-bar button {
@@ -178,14 +166,20 @@ header {
 
   border: none;
 
-  background: #2e7d32;
+  background: var(--pri);
 
-  color: white;
+  color: var(--txtInv);
 
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 var(--rMd) var(--rMd) 0;
+
+  cursor: pointer;
+
+  transition: var(--trans);
 }
 
-/* Icons */
+.search-bar button:hover {
+  background: var(--priHov);
+}
 
 .header-icons {
   display: flex;
@@ -195,27 +189,28 @@ header {
 
 .header-icons a {
   text-decoration: none;
-
-  color: #333;
-
+  color: var(--txt);
   display: flex;
-
   align-items: center;
-
   gap: 6px;
+  transition: var(--trans);
+}
+
+.header-icons a:hover {
+  color: var(--pri);
 }
 
 .header-icons i {
-  color: #2e7d32;
+  color: var(--pri);
 
   font-size: 22px;
 }
 
 #main-nav {
   width: 100%;
-  background: #ffffff;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #eeeeee;
+  background: var(--bg);
+  border-top: 1px solid var(--bd);
+  border-bottom: 1px solid var(--bd);
 }
 
 .nav-container {
@@ -234,7 +229,7 @@ header {
   margin: 0;
   padding: 0;
 
-  height: 70px;
+  height: var(--navH);
 }
 
 .nav-menu li {
@@ -251,21 +246,21 @@ header {
   height: 100%;
 
   text-decoration: none;
-  color: #333333;
+  color: var(--txt);
 
   font-size: 17px;
-  font-weight: 500;
+  font-weight: var(--fwMed);
 
-  transition: color 0.3s ease;
+  transition: var(--trans);
 }
 
 .nav-menu a:hover {
-  color: #2e7d32;
+  color: var(--pri);
 }
 
 .nav-menu a.active {
-  color: #2e7d32;
-  font-weight: 600;
+  color: var(--pri);
+  font-weight: var(--fwBold);
 }
 
 .nav-menu a.active::after {
@@ -277,9 +272,9 @@ header {
   bottom: 0;
 
   height: 3px;
-  background: #2e7d32;
+  background: var(--pri);
 
-  border-radius: 3px 3px 0 0;
+  border-radius: var(--rSm) var(--rSm) 0 0;
 }
 
 @media (max-width: 768px) {
