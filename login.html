@@ -1,34 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="login.css">
-<body>
-    <div class="main">
-        <div id="top">
-            <h1>Login Form</h1>
-            <form action="index.html">
-                    <div class="but_log">
-                        <button id="login">Login</button>
-                        <button id="sign_up">Signup</button>
-                    </div>
-                </div>
-                <div id="input">
-                    <input type="email" required placeholder=" Email Address">
-                    <input type="password" required placeholder=" Password">
-                    <a href="#">Forget password?</a>
-                </div>
-                <div id="bot">
-                    <button>Login</button>
-                    <p>Not a member?<a href="#"> Signup now</a></p>
-                </div>
-              </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login | FoodieHub</title>
+
+    <link rel="stylesheet" href="login.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="auth-page">
+    <div class="auth-left">
+      <div class="auth-overlay">
+        <div class="auth-brand">🍴 FoodieHub</div>
+
+        <div>
+          <span>WELCOME BACK</span>
+
+          <h1>
+            Your next<br />
+            delicious meal<br />
+            is waiting.
+          </h1>
+
+          <p>Discover restaurants, read reviews and find food you'll love.</p>
+        </div>
+      </div>
     </div>
-</body>
+
+    <div class="auth-right">
+      <div class="auth-form">
+        <a href="index.html" class="back-home"> ← Back to home </a>
+
+        <h2>Welcome back 👋</h2>
+
+        <p class="auth-subtitle">Login to continue your food journey.</p>
+
+        <form onsubmit="loginUser(event)">
+          <label>Email Address</label>
+
+          <input
+            type="email"
+            id="loginEmail"
+            placeholder="you@example.com"
+            required
+          />
+
+          <label>Password</label>
+
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter your password"
+            required
+          />
+
+          <div class="form-options">
+            <label class="remember">
+              <input type="checkbox" />
+              Remember me
+            </label>
+
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button class="main-auth-btn">Login →</button>
+        </form>
+
+        <div class="divider">
+          <span>OR</span>
+        </div>
+
+        <p class="register-text">
+          Don't have an account?
+
+          <a href="register.html"> Create one </a>
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
