@@ -3,11 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Login | FoodieHub</title>
-
+    <title>Login | 🌱 FarmFresh</title>
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="login.css" />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -17,45 +15,40 @@
   <body class="auth-page">
     <div class="auth-left">
       <div class="auth-overlay">
-        <div class="auth-brand">🍴 FoodieHub</div>
+        <div class="auth-brand">🌱 FarmFresh</div>
 
         <div>
           <span>WELCOME BACK</span>
-
-          <h1>
-            Your next<br />
-            delicious meal<br />
-            is waiting.
-          </h1>
-
-          <p>Discover restaurants, read reviews and find food you'll love.</p>
+          <h1>Your Own<br />Farm<br />is waiting.</h1>
+          <p>Discover Fresh Vegetable, Fruits directly from our Farmer.</p>
         </div>
       </div>
     </div>
 
     <div class="auth-right">
       <div class="auth-form">
-        <a href="index.html" class="back-home"> ← Back to home </a>
+        <a href="index.html" class="back-home">← Back to home</a>
 
-        <h2>Welcome back 👋</h2>
-
-        <p class="auth-subtitle">Login to continue your food journey.</p>
+        <h2>Welcome 👋</h2>
+        <p class="auth-subtitle">Login to continue your healthy journey.</p>
 
         <form onsubmit="loginUser(event)">
-          <label>Email Address</label>
-
+          <label for="loginEmail">Email</label>
           <input
             type="email"
             id="loginEmail"
+            name="email"
+            autocomplete="email"
             placeholder="you@example.com"
             required
           />
 
-          <label>Password</label>
-
+          <label for="loginPassword">Password</label>
           <input
             type="password"
             id="loginPassword"
+            name="password"
+            autocomplete="current-password"
             placeholder="Enter your password"
             required
           />
@@ -65,25 +58,36 @@
               <input type="checkbox" />
               Remember me
             </label>
-
             <a href="#">Forgot password?</a>
           </div>
 
-          <button class="main-auth-btn">Login →</button>
+          <button type="submit" class="main-auth-btn">Login →</button>
         </form>
 
-        <div class="divider">
-          <span>OR</span>
-        </div>
+        <div class="divider"><span>OR</span></div>
 
         <p class="register-text">
           Don't have an account?
-
-          <a href="register.html"> Create one </a>
+          <a href="register.html">Create one</a>
         </p>
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+      function loginUser(event) {
+        event.preventDefault();
+
+        const email = document.getElementById("loginEmail").value.trim();
+        const password = document.getElementById("loginPassword").value;
+
+        if (!email || !password) {
+          alert("Please fill in all fields.");
+          return;
+        }
+
+        alert("Login successful! 🎉");
+        window.location.href = "index.html";
+      }
+    </script>
   </body>
 </html>
