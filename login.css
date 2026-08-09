@@ -1,61 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: var(--txt);
+}
+
 .auth-page {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: white;
+  background: var(--bg);
 }
 
 .auth-left {
   background:
-    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("https://images.unsplash.com/photo-1552566626-52f8b828add9");
-
+    linear-gradient(var(--overlay), var(--overlay)),
+    url("https://images.stockcake.com/public/3/8/c/38cf84df-bb2f-46af-8118-1325cc09ac62_large/green-energy-harvest-stockcake.jpg");
   background-size: cover;
   background-position: center;
-  color: white;
+  color: var(--txtInv);
 }
 
 .auth-overlay {
   height: 100%;
-  padding: 50px 10%;
+  padding: var(--sp6) 10%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .auth-brand {
-  font-size: 24px;
-  font-weight: 800;
+  font-size: var(--fsLg);
+  font-weight: var(--fwBold);
 }
 
 .auth-overlay > div:last-child {
-  padding-bottom: 70px;
+  padding-bottom: var(--sp6);
 }
 
 .auth-overlay span {
-  color: #ff6b2c;
-  font-size: 12px;
-  font-weight: 700;
+  color: var(--acc);
+  font-size: var(--fsSm);
+  font-weight: var(--fwBold);
   letter-spacing: 2px;
 }
 
 .auth-overlay h1 {
-  font-size: 50px;
+  font-size: var(--fsHero);
   line-height: 1.1;
-  margin: 15px 0;
+  margin: var(--sp4) 0;
+  font-weight: var(--fwBold);
 }
 
 .auth-overlay p {
   max-width: 400px;
-  color: #ddd;
+  color: var(--bd);
   line-height: 1.7;
+  font-size: var(--fsMd);
 }
 
 .auth-right {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: var(--sp6);
+  background: var(--bg);
 }
 
 .auth-form {
@@ -65,118 +77,146 @@
 
 .back-home {
   display: inline-block;
-  color: #777;
-  font-size: 13px;
-  margin-bottom: 50px;
+  color: var(--txt2);
+  font-size: var(--fsSm);
+  margin-bottom: var(--sp6);
+  text-decoration: none;
+  transition: var(--trans);
+}
+
+.back-home:hover {
+  color: var(--pri);
 }
 
 .auth-form h2 {
-  font-size: 32px;
-  margin-bottom: 8px;
+  font-size: var(--fsXl);
+  margin-bottom: var(--sp2);
+  font-weight: var(--fwBold);
+  color: var(--txt);
 }
 
 .auth-subtitle {
-  color: #888;
-  font-size: 13px;
-  margin-bottom: 35px;
+  color: var(--txt2);
+  font-size: var(--fsSm);
+  margin-bottom: var(--sp6);
 }
 
 .auth-form form > label {
   display: block;
-  margin-bottom: 8px;
-  margin-top: 20px;
-  font-size: 13px;
-  font-weight: 600;
+  margin-bottom: var(--sp2);
+  margin-top: var(--sp5);
+  font-size: var(--fsSm);
+  font-weight: var(--fwMed);
+  color: var(--txt);
 }
 
 .auth-form input[type="email"],
 .auth-form input[type="password"],
 .auth-form input[type="text"] {
   width: 100%;
-  padding: 14px 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: var(--sp3) var(--sp4);
+  border: 1px solid var(--bd);
+  border-radius: var(--rMd);
   outline: none;
   font-family: inherit;
-  transition: 0.3s;
+  font-size: var(--fsMd);
+  background: var(--txtInv);
+  color: var(--txt);
+  transition: var(--trans);
 }
+
+.auth-form input::placeholder {
+  color: var(--txt2);
+}
+
 .auth-form input:focus {
-  border-color: #ff5a1f;
-  box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.1);
+  border-color: var(--acc);
+  box-shadow: 0 0 0 3px rgba(242, 166, 73, 0.15);
 }
 
 .form-options {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 18px 0 25px;
-  font-size: 11px;
+  margin: var(--sp4) 0 var(--sp5);
+  font-size: var(--fsSm);
 }
 
 .form-options a {
-  color: #ff5a1f;
+  color: var(--acc);
+  text-decoration: none;
+  transition: var(--trans);
 }
+
+.form-options a:hover {
+  color: var(--accHov);
+}
+
 .remember {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--sp2);
+  color: var(--txt2);
 }
 
 .remember input {
-  accent-color: #ff5a1f;
+  accent-color: var(--acc);
 }
 
 .main-auth-btn {
   width: 100%;
-  padding: 15px;
+  padding: var(--sp4);
   border: none;
-  border-radius: 8px;
-  background: #ff5a1f;
-  color: white;
+  border-radius: var(--rMd);
+  background: var(--acc);
+  color: var(--txtInv);
   font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--fsSm);
+  font-weight: var(--fwBold);
   cursor: pointer;
-  transition: 0.3s;
+  transition: var(--trans);
 }
+
 .main-auth-btn:hover {
-  background: #e84b12;
+  background: var(--accHov);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 90, 31, 0.25);
+  box-shadow: 0 10px 25px var(--shadow);
 }
 
 .divider {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin: 30px 0;
-  color: #aaa;
-  font-size: 11px;
+  gap: var(--sp4);
+  margin: var(--sp6) 0;
+  color: var(--txt2);
+  font-size: var(--fsSm);
 }
 
 .divider::before,
 .divider::after {
   content: "";
-
   flex: 1;
-
   height: 1px;
-
-  background: #eee;
+  background: var(--bd);
 }
 
 .register-text {
   text-align: center;
-
-  font-size: 13px;
-
-  color: #777;
+  font-size: var(--fsSm);
+  color: var(--txt2);
 }
+
 .register-text a {
-  color: #ff5a1f;
-
-  font-weight: 600;
+  color: var(--acc);
+  font-weight: var(--fwBold);
+  text-decoration: none;
+  transition: var(--trans);
 }
+
+.register-text a:hover {
+  color: var(--accHov);
+}
+
 @media (max-width: 800px) {
   .auth-page {
     grid-template-columns: 1fr;
