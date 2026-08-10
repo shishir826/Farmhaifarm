@@ -73,43 +73,42 @@
       </div>
     </div>
 
-<script>
-  function loginUser(event) {
-    event.preventDefault();
+    <script>
+      function loginUser(event) {
+        event.preventDefault();
 
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value;
+        const email = document.getElementById("loginEmail").value.trim();
+        const password = document.getElementById("loginPassword").value;
 
-    if (!email || !password) {
-      alert("Please fill in all fields.");
-      return;
-    }
-
-    // Put login information into FormData
-    const formData = new FormData();
-
-    formData.append("email", email);
-    formData.append("password", password);
-
-    // Send information to PHP
-    fetch("php/login.php", {
-      method: "POST",
-      body: formData
-    })
-      .then(response => response.text())
-      .then(data => {
-        if (data === "Login successful!") {
-          alert("Login successful! 🎉");
-          window.location.href = "index.html";
-        } else {
-          alert(data);
+        if (!email || !password) {
+          alert("Please fill in all fields.");
         }
-      })
-      .catch(error => {
-        console.error(error);
-        alert("Something went wrong. Please try again.");
-      });
-  }
-</script>
+        return;
+        // Put login information into FormData
+        const formData = new FormData();
+
+        formData.append("email", email);
+        formData.append("password", password);
+
+        // Send information to PHP
+        fetch("php/login.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            if (data === "Login successful!") {
+              alert("Login successful! 🎉");
+              window.location.href = "index.html";
+            } else {
+              alert(data);
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            alert("Something went wrong. Please try again.");
+          });
+      }
+    </script>
   </body>
 </html>
