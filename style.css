@@ -301,23 +301,37 @@ section{
 
 .banner
 {
-  border: 1px solid; 
+  border: 0px solid; 
   display:flex;
   justify-content: center;
   background: url(tasbir/veg.png) no-repeat;
   background-position: center;
   background-size: cover;
-  padding-top: 17rem;
+  padding-top: 20rem;
   padding-bottom: 10rem;
   
 }
 
 .content
 {
-  border: 1px solid;
+  border: 0px solid;
   text-align: center;
   width: 60rem;
+  position: relative;
+  left: 90px;
   
+}
+
+.banner .content h3
+{
+  color: var(--black);
+  font-size: 3rem;
+}
+
+.banner .content p
+{
+  color: var(--light-color);
+  font-size: 1.7rem;
 }
 
 
