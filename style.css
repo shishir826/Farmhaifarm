@@ -299,13 +299,27 @@ section{
   padding: 2rem 9%;
 }
 
-.content
+.banner
 {
   border: 1px solid; 
   display:flex;
   justify-content: center;
+  background: url(tasbir/veg.png) no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 17rem;
+  padding-bottom: 10rem;
   
 }
+
+.content
+{
+  border: 1px solid;
+  text-align: center;
+  width: 60rem;
+  
+}
+
 
 .btn
 {
