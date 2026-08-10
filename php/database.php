@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$dbname = "farmhai";
+$dbname = "farmfresh";
 $username = "root";
 $password = "";
 
@@ -13,9 +13,8 @@ try {
     );
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    echo "Database connected successfully!";
+    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    echo "Database connection failed: " . $e->getMessage();
+    die("Database connection failed: " . $e->getMessage());
 }
