@@ -6,11 +6,11 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     die("Invalid request.");
 }
 
-$name = trim($_POST['name'] ?? '');
-$email = trim($_POST['email'] ?? '');
-$password = $_POST['password'] ?? '';
+$name = trim($_POST["name"] ?? "");
+$email = trim($_POST["email"] ?? "");
+$password = $_POST["password"] ?? "";
 
-if ($name === '' || $email === '' || $password === '') {
+if ($name === "" || $email === "" || $password === "") {
     die("All fields are required.");
 }
 
@@ -18,7 +18,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     die("Invalid email address.");
 }
 
-// Check whether email already exists
+// Check if email already exists
 $stmt = $conn->prepare(
     "SELECT id FROM users WHERE email = ?"
 );
@@ -35,9 +35,10 @@ $hashedPassword = password_hash(
     PASSWORD_DEFAULT
 );
 
-// Create customer account
+// All new registrations are customers
 $role = "customer";
 
+// Insert user
 $stmt = $conn->prepare(
     "INSERT INTO users (name, email, password, role)
      VALUES (?, ?, ?, ?)"
