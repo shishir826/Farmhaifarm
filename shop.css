@@ -1,0 +1,145 @@
+/* =========================================================
+   Shop by Categories
+   (uses variables defined in var.css — load that file first)
+   ========================================================= */
+
+.categories-section {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--sp6) 8%;
+}
+
+.categories-section .section-head {
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto var(--sp5);
+}
+
+.categories-section .eyebrow {
+  display: inline-block;
+  font-size: var(--fsSm);
+  font-weight: var(--fwBold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pri);
+  margin-bottom: var(--sp2);
+}
+
+.categories-section h2 {
+  font-size: var(--fsXl);
+  color: var(--txt);
+  margin: 0 0 var(--sp2);
+}
+
+.categories-section .section-sub {
+  font-size: var(--fsMd);
+  color: var(--txt2);
+  margin: 0;
+}
+
+/* ----- Filter pills ----- */
+
+.cat-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp3);
+  margin-bottom: var(--sp6);
+}
+
+.cat-filters button {
+  font-family: inherit;
+  font-size: var(--fsSm);
+  font-weight: var(--fwMed);
+  color: var(--txt);
+  background: var(--txtInv);
+  border: 1px solid var(--bd);
+  border-radius: var(--rFull);
+  padding: var(--sp2) var(--sp4);
+  cursor: pointer;
+  transition: var(--trans);
+}
+
+.cat-filters button:hover {
+  border-color: var(--pri);
+  color: var(--pri);
+}
+
+.cat-filters button.active {
+  background: var(--pri);
+  border-color: var(--pri);
+  color: var(--txtInv);
+}
+
+/* ----- Category grid ----- */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--sp4);
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp2);
+  padding: var(--sp5) var(--sp3);
+  background: var(--bg3);
+  border: 1px solid var(--bd);
+  border-radius: var(--rLg);
+  text-decoration: none;
+  color: var(--txt);
+  transition: var(--trans);
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--pri);
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+.category-card .cat-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fsXl);
+  background: var(--txtInv);
+  border: 2px solid var(--pri);
+  border-radius: var(--rFull);
+}
+
+.category-card h3 {
+  font-size: var(--fsMd);
+  font-weight: var(--fwBold);
+  margin: 0;
+  color: var(--txt);
+}
+
+.category-card p {
+  font-size: var(--fsSm);
+  color: var(--txt2);
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cat-filters {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: var(--sp2);
+  }
+}
