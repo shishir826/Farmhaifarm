@@ -295,6 +295,26 @@ header {
   }
 }
 
+section{
+  padding: 2rem 9%;
+}
+
+.content
+{
+  border: 1px solid; 
+  display:flex;
+  justify-content: center;
+  
+}
+
+.btn
+{
+  border: 1px solid;
+  color: white;
+  background-color: #037a1b;
+}
+
+
 .footer {
   background: var(--bg2);
   color: var(--txtInv);
