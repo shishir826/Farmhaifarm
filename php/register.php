@@ -2,10 +2,21 @@
 
 require_once "database.php";
 
-$name = "John Doe";
-$email = "john@example.com";
-$password = "mypassword123";
-$role = "customer";
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    die("Invalid request.");
+}
+
+$name = trim($_POST['name'] ?? '');
+$email = trim($_POST['email'] ?? '');
+$password = $_POST['password'] ?? '';
+
+if ($name === '' || $email === '' || $password === '') {
+    die("All fields are required.");
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die("Invalid email address.");
+}
 
 // Check whether email already exists
 $stmt = $conn->prepare(
@@ -19,9 +30,14 @@ if ($stmt->fetch()) {
 }
 
 // Hash password
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+$hashedPassword = password_hash(
+    $password,
+    PASSWORD_DEFAULT
+);
 
-// Insert user
+// Create customer account
+$role = "customer";
+
 $stmt = $conn->prepare(
     "INSERT INTO users (name, email, password, role)
      VALUES (?, ?, ?, ?)"
