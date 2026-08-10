@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Farm Fresh</title>
     <link rel="stylesheet" href="var.css" />
+    <link rel="stylesheet" href="shop.css" />
   </head>
   <body>
     <header>
@@ -54,11 +55,57 @@
         </div>
       </nav>
     </header>
-    <div class="category"></div>
-    <h2>Shop By Categories</h2>
-    <div class="filters" id="filters">
-      <button>All</button>
-    </div>
+    <section class="categories-section">
+      <div class="section-head">
+        <span class="eyebrow">Fresh &amp; Local</span>
+        <h2>Shop By Categories</h2>
+        <p class="section-sub">
+          Produce and pantry staples sourced directly from farmers near you.
+        </p>
+      </div>
+
+      <div class="cat-filters" id="filters">
+        <button class="active">All</button>
+        <button>Vegetables</button>
+        <button>Fruits</button>
+        <button>Dairy &amp; Eggs</button>
+        <button>Grains &amp; Pulses</button>
+        <button>Herbs &amp; Spices</button>
+      </div>
+
+      <div class="category-grid">
+        <a href="shop.html?cat=vegetables" class="category-card">
+          <div class="cat-icon">🥕</div>
+          <h3>Vegetables</h3>
+          <p>120+ items</p>
+        </a>
+        <a href="shop.html?cat=fruits" class="category-card">
+          <div class="cat-icon">🍎</div>
+          <h3>Fruits</h3>
+          <p>85+ items</p>
+        </a>
+        <a href="shop.html?cat=dairy" class="category-card">
+          <div class="cat-icon">🥚</div>
+          <h3>Dairy &amp; Eggs</h3>
+          <p>40+ items</p>
+        </a>
+        <a href="shop.html?cat=grains" class="category-card">
+          <div class="cat-icon">🌾</div>
+          <h3>Grains &amp; Pulses</h3>
+          <p>55+ items</p>
+        </a>
+        <a href="shop.html?cat=herbs" class="category-card">
+          <div class="cat-icon">🌿</div>
+          <h3>Herbs &amp; Spices</h3>
+          <p>30+ items</p>
+        </a>
+        <a href="shop.html?cat=honey" class="category-card">
+          <div class="cat-icon">🍯</div>
+          <h3>Honey &amp; Preserves</h3>
+          <p>20+ items</p>
+        </a>
+      </div>
+    </section>
 
     <footer class="footer">
       <div class="footer-container">
