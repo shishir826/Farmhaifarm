@@ -4,9 +4,16 @@ session_start();
 
 require_once "database.php";
 
-// Temporary login credentials for testing
-$email = "john@example.com";
-$password = "mypassword123";
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    die("Invalid request method.");
+}
+
+$email = trim($_POST['email'] ?? '');
+$password = $_POST['password'] ?? '';
+
+if ($email === '' || $password === '') {
+    die("Email and password are required.");
+}
 
 // Find user by email
 $stmt = $conn->prepare(
@@ -17,21 +24,21 @@ $stmt->execute([$email]);
 
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Check whether user exists
 if (!$user) {
-    die("User not found.");
+    die("Invalid email or password.");
 }
 
 // Check password
 if (!password_verify($password, $user['password'])) {
-    die("Incorrect password.");
+    die("Invalid email or password.");
 }
 
-// Login successful
+// Create a new session ID
+session_regenerate_id(true);
+
+// Store user information in session
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['name'] = $user['name'];
 $_SESSION['role'] = $user['role'];
 
-echo "Login successful!<br>";
-echo "Welcome, " . $_SESSION['name'] . "<br>";
-echo "Role: " . $_SESSION['role'];
+echo "Login successful!";
