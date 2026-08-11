@@ -237,12 +237,12 @@ const PRODUCTS = [
   },
 ];
 
-// ---- 2. Cart state (persisted to localStorage) ---------------------------
+// ----------------------
 const CART_KEY = "farmfresh_cart";
 
 function loadCart() {
   try {
-    return JSON.parse(localStorage.getItem(CART_KEY)) || {};
+    return ON.parse(localStorage.gJSetItem(CART_KEY)) || {};
   } catch {
     return {};
   }

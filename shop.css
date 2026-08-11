@@ -244,7 +244,6 @@
   margin: 0;
 }
 
-/* Add to cart button */
 .add-to-cart-btn {
   flex: 1;
   background: var(--pf-green);
