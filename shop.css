@@ -1,145 +1,91 @@
-/* =========================================================
-   Shop by Categories
-   (uses variables defined in var.css — load that file first)
-   ========================================================= */
+/* ==========================================================================
+   ORDER-FORM.CSS — styling for the order form section on shop.html
+   ========================================================================== */
 
-.categories-section {
-  max-width: var(--container);
+:root {
+  --pf-green: var(--color-primary, #3f7d3a);
+  --pf-green-dark: var(--color-primary-dark, #2e5c2b);
+  --pf-cream: var(--color-bg, #faf6ec);
+  --pf-orange: var(--color-accent, #e8813a);
+  --pf-text: var(--color-text, #2b2b28);
+  --pf-muted: var(--color-muted, #6f6a5f);
+  --pf-card-bg: var(--color-surface, #ffffff);
+  --pf-border: var(--color-border, #e5e0d3);
+  --pf-radius: 12px;
+}
+
+.order-section {
+  max-width: 700px;
   margin: 0 auto;
-  padding: var(--sp6) 8%;
+  padding: 48px 24px 64px;
 }
 
-.categories-section .section-head {
+.order-section .section-head {
   text-align: center;
-  max-width: 60ch;
-  margin: 0 auto var(--sp5);
+  margin-bottom: 28px;
 }
 
-.categories-section .eyebrow {
-  display: inline-block;
-  font-size: var(--fsSm);
-  font-weight: var(--fwBold);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--pri);
-  margin-bottom: var(--sp2);
-}
-
-.categories-section h2 {
-  font-size: var(--fsXl);
-  color: var(--txt);
-  margin: 0 0 var(--sp2);
-}
-
-.categories-section .section-sub {
-  font-size: var(--fsMd);
-  color: var(--txt2);
-  margin: 0;
-}
-
-/* ----- Filter pills ----- */
-
-.cat-filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--sp3);
-  margin-bottom: var(--sp6);
-}
-
-.cat-filters button {
-  font-family: inherit;
-  font-size: var(--fsSm);
-  font-weight: var(--fwMed);
-  color: var(--txt);
-  background: var(--txtInv);
-  border: 1px solid var(--bd);
-  border-radius: var(--rFull);
-  padding: var(--sp2) var(--sp4);
-  cursor: pointer;
-  transition: var(--trans);
-}
-
-.cat-filters button:hover {
-  border-color: var(--pri);
-  color: var(--pri);
-}
-
-.cat-filters button.active {
-  background: var(--pri);
-  border-color: var(--pri);
-  color: var(--txtInv);
-}
-
-/* ----- Category grid ----- */
-
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: var(--sp4);
-}
-
-.category-card {
+.order-form {
+  background: var(--pf-card-bg);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius);
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--sp2);
-  padding: var(--sp5) var(--sp3);
-  background: var(--bg3);
-  border: 1px solid var(--bd);
-  border-radius: var(--rLg);
-  text-decoration: none;
-  color: var(--txt);
-  transition: var(--trans);
+  gap: 18px;
 }
 
-.category-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--pri);
-  box-shadow: 0 8px 20px var(--shadow);
-}
-
-.category-card .cat-icon {
-  width: 64px;
-  height: 64px;
+.order-form .form-group {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--fsXl);
-  background: var(--txtInv);
-  border: 2px solid var(--pri);
-  border-radius: var(--rFull);
+  flex-direction: column;
+  gap: 6px;
 }
 
-.category-card h3 {
-  font-size: var(--fsMd);
-  font-weight: var(--fwBold);
-  margin: 0;
-  color: var(--txt);
+.order-form label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--pf-text);
 }
 
-.category-card p {
-  font-size: var(--fsSm);
-  color: var(--txt2);
-  margin: 0;
+.order-form input,
+.order-form textarea {
+  border: 1px solid var(--pf-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--pf-text);
+  background: var(--pf-cream);
 }
 
-@media (max-width: 1024px) {
-  .category-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.order-form input:focus,
+.order-form textarea:focus {
+  outline: none;
+  border-color: var(--pf-green);
 }
 
-@media (max-width: 640px) {
-  .category-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.order-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
 
-  .cat-filters {
-    justify-content: flex-start;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: var(--sp2);
-  }
+.order-form small {
+  color: var(--pf-muted);
+  font-size: 0.8rem;
+}
+
+.order-form .btn-submit-order {
+  background: var(--pf-green);
+  color: #fff;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.order-form .btn-submit-order:hover {
+  background: var(--pf-green-dark);
 }

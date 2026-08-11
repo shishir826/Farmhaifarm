@@ -1,10 +1,6 @@
 <?php
 
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-    die("You are not logged in.");
-}
+require_once "auth.php";
 
 echo "You are logged in!<br>";
 echo "User ID: " . $_SESSION['user_id'] . "<br>";
