@@ -6,7 +6,7 @@
     <title>Farm Fresh</title>
     <link rel="stylesheet" href="var.css" />
     <link rel="stylesheet" href="shop.css" />
-    <link rel="stylesheet" href="products.css" />
+    <link rel="stylesheet" href="order-form.css" />
   </head>
   <body>
     <header>
@@ -32,9 +32,8 @@
         </div>
 
         <div class="header-icons">
-          <a href="#cart"
-            >🛒 Cart <span id="cart-count" class="cart-count">0</span></a
-          >
+          <a href="#">♡ Wishlist</a>
+          <a href="#order-form">🛒 Order</a>
           <a href="#">👤 Account</a>
         </div>
       </div>
@@ -57,38 +56,136 @@
         </div>
       </nav>
     </header>
-    <!-- ================= PRODUCT LISTING ================= -->
-    <section class="products-section" id="products">
+    <section class="categories-section">
       <div class="section-head">
-        <span class="eyebrow">Farm to Door</span>
-        <h2>All Products</h2>
+        <span class="eyebrow">Fresh &amp; Local</span>
+        <h2>Shop By Categories</h2>
         <p class="section-sub">
-          Pick your quantity and add fresh vegetables and fruits straight to
-          your cart.
+          Produce and pantry staples sourced directly from farmers near you.
         </p>
       </div>
 
-      <div class="products-toolbar">
-        <div class="products-tabs" id="filters-products">
-          <button class="active" data-cat="all">All</button>
-          <button data-cat="vegetables">Vegetables</button>
-          <button data-cat="fruits">Fruits</button>
-        </div>
-
-        <div class="products-sort">
-          <label for="sort-select">Sort by</label>
-          <select id="sort-select">
-            <option value="default">Featured</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="name-asc">Name: A–Z</option>
-          </select>
-        </div>
+      <div class="cat-filters" id="filters">
+        <button class="active">All</button>
+        <button>Vegetables</button>
+        <button>Fruits</button>
+        <button>Dairy &amp; Eggs</button>
+        <button>Grains &amp; Pulses</button>
+        <button>Herbs &amp; Spices</button>
       </div>
 
-      <div class="product-grid" id="product-grid">
-        <!-- Product cards are rendered here by products.js -->
+      <div class="category-grid">
+        <a href="shop.html?cat=vegetables" class="category-card">
+          <div class="cat-icon">🥕</div>
+          <h3>Vegetables</h3>
+          <p>120+ items</p>
+        </a>
+        <a href="shop.html?cat=fruits" class="category-card">
+          <div class="cat-icon">🍎</div>
+          <h3>Fruits</h3>
+          <p>85+ items</p>
+        </a>
+        <a href="shop.html?cat=dairy" class="category-card">
+          <div class="cat-icon">🥚</div>
+          <h3>Dairy &amp; Eggs</h3>
+          <p>40+ items</p>
+        </a>
+        <a href="shop.html?cat=grains" class="category-card">
+          <div class="cat-icon">🌾</div>
+          <h3>Grains &amp; Pulses</h3>
+          <p>55+ items</p>
+        </a>
+        <a href="shop.html?cat=herbs" class="category-card">
+          <div class="cat-icon">🌿</div>
+          <h3>Herbs &amp; Spices</h3>
+          <p>30+ items</p>
+        </a>
+        <a href="shop.html?cat=honey" class="category-card">
+          <div class="cat-icon">🍯</div>
+          <h3>Honey &amp; Preserves</h3>
+          <p>20+ items</p>
+        </a>
       </div>
+    </section>
+
+    <!-- ================= ORDER FORM ================= -->
+    <!-- Plain HTML form -> process_order.php -> MySQL. No JS cart logic;
+         the customer just types what they want in the text area. -->
+    <section class="order-section" id="order-form">
+      <div class="section-head">
+        <span class="eyebrow">Place Your Order</span>
+        <h2>Order Fresh Produce</h2>
+        <p class="section-sub">
+          Fill in your details and tell us what you'd like — we'll confirm and
+          deliver.
+        </p>
+      </div>
+
+      <form
+        class="order-form"
+        action="process_order.php"
+        method="POST"
+        onsubmit="
+          return confirm('Submit your order with the details you entered?');
+        "
+      >
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="e.g. Bibas Shrestha"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="e.g. bibas@example.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="e.g. 9812345678"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="address">Delivery Address</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            placeholder="e.g. Baneshwor, Kathmandu"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="order_details">Your Order</label>
+          <textarea
+            id="order_details"
+            name="order_details"
+            placeholder="e.g. 2 kg Tomato, 1 kg Carrot, 1 dozen Banana"
+            required
+          ></textarea>
+          <small>List the items and quantities you'd like to order.</small>
+        </div>
+
+        <button type="submit" class="btn-submit-order">Submit Order</button>
+      </form>
     </section>
 
     <footer class="footer">
@@ -123,7 +220,5 @@
         <p>Farm Fresh Natural 🌱</p>
       </div>
     </footer>
-
-    <script src="shop.js"></script>
   </body>
 </html>
