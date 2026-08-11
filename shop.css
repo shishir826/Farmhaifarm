@@ -1,7 +1,3 @@
-/* ==========================================================================
-   ORDER-FORM.CSS — styling for the order form section on shop.html
-   ========================================================================== */
-
 :root {
   --pf-green: var(--color-primary, #3f7d3a);
   --pf-green-dark: var(--color-primary-dark, #2e5c2b);
