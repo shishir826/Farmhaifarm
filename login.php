@@ -214,12 +214,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
 
     </div>
-    <script>
-    if (!email || !password) {
-    alert("Please fill in all fields.");
-}
-return;</script>
-
 </body>
 
 </html>
