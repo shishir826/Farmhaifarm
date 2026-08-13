@@ -7,9 +7,9 @@ require_once "database.php";
 header("Content-Type: application/json");
 
 
-// =====================================================
-// 1. CHECK IF USER IS LOGGED IN
-// =====================================================
+// ==========================================
+// CHECK LOGIN
+// ==========================================
 
 if (!isset($_SESSION["user_id"])) {
 
@@ -22,16 +22,12 @@ if (!isset($_SESSION["user_id"])) {
 }
 
 
-// =====================================================
-// 2. GET LOGGED-IN USER ID
-// =====================================================
-
 $userId = (int) $_SESSION["user_id"];
 
 
-// =====================================================
-// 3. GET CART DATA SENT FROM JAVASCRIPT
-// =====================================================
+// ==========================================
+// GET CART FROM JAVASCRIPT
+// ==========================================
 
 $cartJson = $_POST["cart"] ?? "";
 
@@ -46,24 +42,10 @@ if ($cartJson === "") {
 }
 
 
-// Convert JSON string into PHP array
 $cart = json_decode($cartJson, true);
 
 
-// Check if JSON is valid
-if (!is_array($cart)) {
-
-    echo json_encode([
-        "success" => false,
-        "message" => "Invalid cart data."
-    ]);
-
-    exit;
-}
-
-
-// Check if cart is empty
-if (count($cart) === 0) {
+if (!is_array($cart) || empty($cart)) {
 
     echo json_encode([
         "success" => false,
@@ -74,11 +56,11 @@ if (count($cart) === 0) {
 }
 
 
-// =====================================================
-// 4. GET CUSTOMER DETAILS FROM USERS TABLE
-// =====================================================
-
 try {
+
+    // ======================================
+    // GET USER DETAILS
+    // ======================================
 
     $stmt = $conn->prepare("
         SELECT
@@ -93,23 +75,23 @@ try {
 
     $stmt->execute([$userId]);
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $user = $stmt->fetch();
 
 
     if (!$user) {
 
         echo json_encode([
             "success" => false,
-            "message" => "User account was not found."
+            "message" => "User not found."
         ]);
 
         exit;
     }
 
 
-    // =================================================
-    // 5. START DATABASE TRANSACTION
-    // =================================================
+    // ======================================
+    // START TRANSACTION
+    // ======================================
 
     $conn->beginTransaction();
 
@@ -119,13 +101,12 @@ try {
     $orderItems = [];
 
 
-    // =================================================
-    // 6. PROCESS CART ITEMS
-    // =================================================
+    // ======================================
+    // PROCESS CART
+    // ======================================
 
     foreach ($cart as $item) {
 
-        // Get values directly from localStorage/cart
         $productId = (int) ($item["productId"] ?? 0);
 
         $productName = trim(
@@ -136,59 +117,46 @@ try {
             $item["quantity"] ?? 0
         );
 
+        // Price comes directly from localStorage
         $rate = (float) (
             $item["price"] ?? 0
         );
 
 
-        // ---------------------------------------------
+        // -------------------------------
         // Basic validation
-        // ---------------------------------------------
+        // -------------------------------
 
         if ($productId <= 0) {
-
-            throw new Exception(
-                "Invalid product ID."
-            );
+            throw new Exception("Invalid product ID.");
         }
-
 
         if ($productName === "") {
-
-            throw new Exception(
-                "Product name is missing."
-            );
+            throw new Exception("Product name is missing.");
         }
 
-
         if ($quantity <= 0) {
-
             throw new Exception(
                 "Invalid quantity for " . $productName
             );
         }
 
-
         if ($rate < 0) {
-
             throw new Exception(
                 "Invalid price for " . $productName
             );
         }
 
 
-        // ---------------------------------------------
+        // -------------------------------
         // Calculate item amount
-        // ---------------------------------------------
+        // -------------------------------
 
         $amount = $rate * $quantity;
 
-
-        // Add to total
         $totalAmount += $amount;
 
 
-        // Store item temporarily
         $orderItems[] = [
 
             "product_id" => $productId,
@@ -205,14 +173,14 @@ try {
     }
 
 
-    // =================================================
-    // 7. INSERT ORDER INTO orders TABLE
-    // =================================================
+    // ======================================
+    // INSERT INTO orders
+    // ======================================
 
     $stmt = $conn->prepare("
         INSERT INTO orders
         (
-            customer_id,
+            user_id,
             customer_name,
             customer_email,
             customer_phone,
@@ -252,16 +220,16 @@ try {
     ]);
 
 
-    // =================================================
-    // 8. GET THE NEW ORDER ID
-    // =================================================
+    // ======================================
+    // GET NEW ORDER ID
+    // ======================================
 
     $orderId = $conn->lastInsertId();
 
 
-    // =================================================
-    // 9. INSERT CART ITEMS INTO order_items
-    // =================================================
+    // ======================================
+    // INSERT INTO order_items
+    // ======================================
 
     $stmt = $conn->prepare("
         INSERT INTO order_items
@@ -305,16 +273,16 @@ try {
     }
 
 
-    // =================================================
-    // 10. COMMIT EVERYTHING
-    // =================================================
+    // ======================================
+    // SAVE EVERYTHING
+    // ======================================
 
     $conn->commit();
 
 
-    // =================================================
-    // 11. SEND SUCCESS RESPONSE TO JAVASCRIPT
-    // =================================================
+    // ======================================
+    // SUCCESS
+    // ======================================
 
     echo json_encode([
 
@@ -331,9 +299,9 @@ try {
 } catch (Exception $e) {
 
 
-    // =================================================
-    // ROLLBACK IF SOMETHING FAILED
-    // =================================================
+    // ======================================
+    // ROLLBACK
+    // ======================================
 
     if ($conn->inTransaction()) {
 
@@ -348,6 +316,5 @@ try {
         "message" => $e->getMessage()
 
     ]);
-
 }
 ?>

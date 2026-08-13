@@ -160,4 +160,215 @@ function removeFromCart(index) {
   displayCart();
 }
 
+<<<<<<< HEAD
+=======
+// ======================================
+// BUY NOW
+// ======================================
+
+const buyButton = document.getElementById("buyButton");
+
+if (buyButton) {
+
+    buyButton.addEventListener("click", async () => {
+
+        // Check cart
+        if (cart.length === 0) {
+
+            alert("Your cart is empty.");
+
+            return;
+        }
+
+
+        // Disable button while processing
+        buyButton.disabled = true;
+
+        buyButton.textContent = "Processing...";
+
+
+        try {
+
+            // Create form data
+            const formData = new FormData();
+
+            formData.append(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+
+            // Send cart to PHP
+            const response = await fetch(
+                "php/place-order.php",
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+
+
+            const result = await response.json();
+
+
+            // ==================================
+            // SUCCESS
+            // ==================================
+
+            if (result.success) {
+
+                alert(
+                    "Order placed successfully!\n" +
+                    "Order ID: " +
+                    result.order_id
+                );
+
+
+                // Clear localStorage cart
+                localStorage.removeItem(
+                    "farmfreshCart"
+                );
+
+
+                // Clear JavaScript cart
+                cart = [];
+
+
+                // Refresh cart display
+                displayCart();
+
+
+            } else {
+
+                alert(
+                    "Order failed: " +
+                    result.message
+                );
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "Order error:",
+                error
+            );
+
+
+            alert(
+                "Something went wrong while placing your order."
+            );
+
+
+        } finally {
+
+            buyButton.disabled = false;
+
+            buyButton.textContent = "Buy Now";
+        }
+
+    });
+}
+
+
+// ======================================
+// BUY NOW
+// ======================================
+
+const buyButton = document.getElementById("buyButton");
+
+if (buyButton) {
+
+  buyButton.addEventListener("click", async () => {
+
+    // Check if cart is empty
+    if (cart.length === 0) {
+      alert("Your cart is empty.");
+      return;
+    }
+
+    // Disable button while processing
+    buyButton.disabled = true;
+    buyButton.textContent = "Processing...";
+
+    try {
+
+      // Create form data
+      const formData = new FormData();
+
+      // Send cart to PHP
+      formData.append(
+        "cart",
+        JSON.stringify(cart)
+      );
+
+      // Send request to PHP
+      const response = await fetch(
+        "php/place-order.php",
+        {
+          method: "POST",
+          body: formData
+        }
+      );
+
+      // Get PHP response
+      const result = await response.json();
+
+      console.log("Server response:", result);
+
+      // ==================================
+      // SUCCESS
+      // ==================================
+
+      if (result.success) {
+
+        alert(
+          "Order placed successfully!\n" +
+          "Order ID: " +
+          result.order_id
+        );
+
+        // Remove cart from localStorage
+        localStorage.removeItem("farmfreshCart");
+
+        // Empty current cart
+        cart = [];
+
+        // Refresh cart display
+        displayCart();
+
+      } else {
+
+        alert(
+          "Order failed: " +
+          result.message
+        );
+
+      }
+
+    } catch (error) {
+
+      console.error("Order error:", error);
+
+      alert(
+        "Something went wrong while placing the order."
+      );
+
+    } finally {
+
+      buyButton.disabled = false;
+      buyButton.textContent = "Buy Now";
+
+    }
+
+  });
+
+}
+
+
+// ======================================
+// LOAD CART PAGE
+// ======================================
+
+>>>>>>> 582f3222d7cbdb43cee23eafa8947f379270bb53
 displayCart();
