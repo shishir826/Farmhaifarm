@@ -396,7 +396,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 ← Back to home
             </a>
 
-            <h2>Create your account 🍴</h2>
+            <h2>Create your account</h2>
 
             <p class="auth-subtitle">
                 Start Your Healthy Journey Today.
