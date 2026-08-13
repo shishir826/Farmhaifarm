@@ -3,13 +3,213 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Farm Fresh</title>
+    <title>Shop - Farm Fresh</title>
+
     <link rel="stylesheet" href="var.css" />
-    <link rel="stylesheet" href="shop.css" />
-    <link rel="stylesheet" href="order-form.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* ===== Shop Section (Green Theme) ===== */
+      .shop-hero {
+        background: linear-gradient(135deg, #2e7d32, #4caf50);
+        color: #fff;
+        text-align: center;
+        padding: 50px 20px;
+      }
+
+      .shop-hero h1 {
+        font-size: 2.2rem;
+        margin-bottom: 8px;
+      }
+
+      .shop-hero p {
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+
+      .shop-section {
+        padding: 50px 8%;
+        background: #f4faf4;
+      }
+
+      .shop-filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 35px;
+      }
+
+      .shop-filter-bar button {
+        border: 2px solid #4caf50;
+        background: #fff;
+        color: #2e7d32;
+        padding: 8px 18px;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .shop-filter-bar button:hover,
+      .shop-filter-bar button.active {
+        background: #4caf50;
+        color: #fff;
+      }
+
+      .shop-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 25px;
+      }
+
+      .product-card {
+        background: #ffffff;
+        border: 1px solid #e0efe0;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(46, 125, 50, 0.08);
+        transition: transform 0.25s, box-shadow 0.25s;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 22px rgba(46, 125, 50, 0.18);
+      }
+
+      .product-img-wrap {
+        position: relative;
+        background: #eef7ee;
+      }
+
+      .product-img-wrap img {
+        width: 100%;
+        height: 170px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .stock-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 20px;
+        color: #fff;
+        letter-spacing: 0.3px;
+      }
+
+      .stock-badge.in-stock {
+        background: #2e7d32;
+      }
+
+      .stock-badge.low-stock {
+        background: #f9a825;
+      }
+
+      .stock-badge.out-stock {
+        background: #b71c1c;
+      }
+
+      .product-info {
+        padding: 14px 16px 18px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .product-info h3 {
+        font-size: 1.05rem;
+        color: #1b3a1e;
+        margin-bottom: 6px;
+      }
+
+      .product-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .product-price {
+        font-weight: 700;
+        color: #2e7d32;
+        font-size: 1.1rem;
+      }
+
+      .product-amount {
+        font-size: 0.8rem;
+        color: #5a6b5a;
+        background: #eef7ee;
+        padding: 3px 9px;
+        border-radius: 8px;
+      }
+
+      .qty-selector {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        border: 1px solid #cfe6cf;
+        border-radius: 8px;
+        padding: 5px;
+      }
+
+      .qty-selector button {
+        background: #eef7ee;
+        border: none;
+        color: #2e7d32;
+        font-weight: 700;
+        width: 26px;
+        height: 26px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .qty-selector button:hover {
+        background: #4caf50;
+        color: #fff;
+      }
+
+      .qty-selector span {
+        min-width: 20px;
+        text-align: center;
+        font-weight: 600;
+        color: #1b3a1e;
+      }
+
+      .add-cart-btn {
+        margin-top: auto;
+        background: #2e7d32;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.25s;
+      }
+
+      .add-cart-btn:hover {
+        background: #256428;
+      }
+
+      .add-cart-btn:disabled {
+        background: #b0bcb0;
+        cursor: not-allowed;
+      }
+    </style>
   </head>
+
   <body>
+    <!-- Header -->
     <header>
+      <!-- Top Bar -->
       <div class="top-bar">
         <div class="top-left">
           <span>📞 +977 9812397426</span>
@@ -20,10 +220,9 @@
           <a href="#">🚚 Track Order</a>
         </div>
       </div>
-
       <div id="mainheader">
         <div class="logo">
-          <a href="#">🌱 FarmFresh</a>
+          <a href="index.html">🌱 FarmFresh</a>
         </div>
 
         <div class="search-bar">
@@ -32,22 +231,28 @@
         </div>
 
         <div class="header-icons">
-          <a href="login.html">👤Login</a>
-          <a href="register.html">👤SignUp</a>
+          <a href="#">🛒 Cart</a>
+          <a href="login.php">👤 Login</a>
+          <a href="register.php">👤 SignUp</a>
         </div>
       </div>
+
+      <!-- Navigation -->
       <nav id="main-nav">
         <div class="nav-container">
           <ul class="nav-menu">
             <li>
               <a href="index.html">Home</a>
             </li>
+
             <li>
-              <a href="shop.html">Shop</a>
+              <a href="shop.html" class="active">Shop</a>
             </li>
+
             <li>
               <a href="about.html">About Us</a>
             </li>
+
             <li>
               <a href="contact.html">Contact</a>
             </li>
@@ -56,96 +261,165 @@
       </nav>
     </header>
 
-    <!-- ================= ORDER FORM ================= -->
-    <!-- Plain HTML form -> process_order.php -> MySQL. No JS cart logic;
-         the customer just types what they want in the text area. -->
-    <section class="order-section" id="order-form">
-      <div class="section-head">
-        <span class="eyebrow">Place Your Order</span>
-        <h2>Order Fresh Produce</h2>
-        <p class="section-sub">
-          Fill in your details and tell us what you'd like — we'll confirm and
-          deliver.
-        </p>
-      </div>
-
-      <form
-        class="order-form"
-        action="process_order.php"
-        method="POST"
-        onsubmit="
-          return confirm('Submit your order with the details you entered?');
-        "
-      >
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="e.g. Bibas Shrestha"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="e.g. bibas@example.com"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="e.g. 9812345678"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="address">Delivery Address</label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            placeholder="e.g. Baneshwor, Kathmandu"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="order_details">Your Order</label>
-          <textarea
-            id="order_details"
-            name="order_details"
-            placeholder="e.g. 2 kg Tomato, 1 kg Carrot, 1 dozen Banana"
-            required
-          ></textarea>
-          <small>List the items and quantities you'd like to order.</small>
-        </div>
-
-        <button type="submit" class="btn-submit-order">Submit Order</button>
-      </form>
+    <!-- Shop Hero -->
+    <section class="shop-hero">
+      <h1>Fresh From The Farm 🌾</h1>
+      <p>Browse our daily-picked vegetables, straight from local farmers.</p>
     </section>
 
+    <!-- Shop Section -->
+    <section class="shop-section" id="shop">
+      <div class="shop-filter-bar">
+        <button class="active">All</button>
+        <button>Leafy Greens</button>
+        <button>Roots</button>
+        <button>Seasonal</button>
+      </div>
+
+      <div class="shop-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="stock-badge in-stock">In Stock</span>
+            <img src="tasbir/today1.png" alt="Cabbage" />
+          </div>
+          <div class="product-info">
+            <h3>Cabbage (बन्दा)</h3>
+            <div class="product-meta">
+              <span class="product-price">रु60/kg</span>
+              <span class="product-amount">1 kg</span>
+            </div>
+            <div class="qty-selector">
+              <button aria-label="decrease">−</button>
+              <span>1</span>
+              <button aria-label="increase">+</button>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="stock-badge in-stock">In Stock</span>
+            <img src="tasbir/today2.png" alt="Carrot" />
+          </div>
+          <div class="product-info">
+            <h3>Carrot (गाजर)</h3>
+            <div class="product-meta">
+              <span class="product-price">रु80/kg</span>
+              <span class="product-amount">1 kg</span>
+            </div>
+            <div class="qty-selector">
+              <button aria-label="decrease">−</button>
+              <span>1</span>
+              <button aria-label="increase">+</button>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="stock-badge low-stock">Low Stock</span>
+            <img src="tasbir/today3.png" alt="Tomato" />
+          </div>
+          <div class="product-info">
+            <h3>Tomato (गोलभेडा)</h3>
+            <div class="product-meta">
+              <span class="product-price">रु90/kg</span>
+              <span class="product-amount">1 kg</span>
+            </div>
+            <div class="qty-selector">
+              <button aria-label="decrease">−</button>
+              <span>1</span>
+              <button aria-label="increase">+</button>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="stock-badge in-stock">In Stock</span>
+            <img src="tasbir/today4.png" alt="Potato" />
+          </div>
+          <div class="product-info">
+            <h3>Potato (आलु)</h3>
+            <div class="product-meta">
+              <span class="product-price">रु55/kg</span>
+              <span class="product-amount">1 kg</span>
+            </div>
+            <div class="qty-selector">
+              <button aria-label="decrease">−</button>
+              <span>1</span>
+              <button aria-label="increase">+</button>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="stock-badge out-stock">Out of Stock</span>
+            <img src="tasbir/today5.png" alt="Spinach" />
+          </div>
+          <div class="product-info">
+            <h3>Spinach (पालुंगो)</h3>
+            <div class="product-meta">
+              <span class="product-price">रु40/kg</span>
+              <span class="product-amount">1 kg</span>
+            </div>
+            <div class="qty-selector">
+              <button aria-label="decrease" disabled>−</button>
+              <span>0</span>
+              <button aria-label="increase" disabled>+</button>
+            </div>
+            <button class="add-cart-btn" disabled>Out of Stock</button>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="stock-badge in-stock">In Stock</span>
+            <img src="tasbir/today1.png" alt="Cauliflower" />
+          </div>
+          <div class="product-info">
+            <h3>Cauliflower (काउली)</h3>
+            <div class="product-meta">
+              <span class="product-price">रु70/kg</span>
+              <span class="product-amount">1 kg</span>
+            </div>
+            <div class="qty-selector">
+              <button aria-label="decrease">−</button>
+              <span>1</span>
+              <button aria-label="increase">+</button>
+            </div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
       <div class="footer-container">
+        <!-- Brand -->
         <div class="footer-column footer-brand">
           <h2>🌱 FarmFresh</h2>
 
           <p>Fresh products directly from farmers to your door.</p>
 
           <p>📞 +977 9812397426</p>
+
           <p>✉ support@farmfresh.com</p>
         </div>
+
+        <!-- Customer Service -->
         <div class="footer-column">
           <h3>Customer Service</h3>
 
@@ -153,20 +427,58 @@
           <a href="#">📦 Delivery Information</a>
           <a href="#">💳 Payment Information</a>
         </div>
+
+        <!-- Follow Us -->
         <div class="footer-column">
           <h3>Follow Us</h3>
 
           <a href="#">Facebook</a>
           <a href="#">Instagram</a>
           <a href="#">TikTok</a>
-          <a href="#">hvhfhh</a>
         </div>
       </div>
+
+      <!-- Footer Bottom -->
       <div class="footer-bottom">
         <p>© 2026 FarmFresh. All Rights Reserved.</p>
 
         <p>Farm Fresh Natural 🌱</p>
       </div>
     </footer>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/2810143202.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Quantity selector + cart script -->
+    <script src="cart.js">
+      document.querySelectorAll(".product-card").forEach((card) => {
+        const minus = card.querySelector('button[aria-label="decrease"]');
+        const plus = card.querySelector('button[aria-label="increase"]');
+        const qtyDisplay = card.querySelector(".qty-selector span");
+        const addBtn = card.querySelector(".add-cart-btn");
+
+        if (!minus || minus.disabled) return; // skip out-of-stock cards
+
+        let qty = 1;
+
+        minus.addEventListener("click", () => {
+          if (qty > 1) qty--;
+          qtyDisplay.textContent = qty;
+        });
+
+        plus.addEventListener("click", () => {
+          qty++;
+          qtyDisplay.textContent = qty;
+        });
+
+        addBtn.addEventListener("click", () => {
+          addBtn.textContent = "Added ✓";
+          setTimeout(() => (addBtn.textContent = "Add to Cart"), 1200);
+        });
+      });
+    </script>
   </body>
 </html>
