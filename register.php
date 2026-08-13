@@ -361,7 +361,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="auth-overlay">
 
             <div class="auth-brand">
-                🍴 🌱 FarmFresh
+                🌱 FarmFresh
             </div>
 
             <div>
