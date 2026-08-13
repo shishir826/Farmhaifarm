@@ -8,7 +8,9 @@ header("Content-Type: application/json");
 
 try {
 
+    // -----------------------------
     // Check session
+    // -----------------------------
     if (!isset($_SESSION["user_id"])) {
         throw new Exception("SESSION ERROR: user_id is not set.");
     }
@@ -16,7 +18,9 @@ try {
     $userId = (int) $_SESSION["user_id"];
 
 
+    // -----------------------------
     // Check cart
+    // -----------------------------
     if (!isset($_POST["cart"])) {
         throw new Exception("CART ERROR: cart was not received.");
     }
@@ -25,7 +29,7 @@ try {
 
     if (!is_array($cart)) {
         throw new Exception(
-            "CART ERROR: invalid JSON. Received: " . $_POST["cart"]
+            "CART ERROR: invalid JSON."
         );
     }
 
@@ -34,9 +38,11 @@ try {
     }
 
 
+    // -----------------------------
     // Get user
+    // -----------------------------
     $stmt = $conn->prepare("
-        SELECT id, name, email, phone, address
+        SELECT id, name, email
         FROM users
         WHERE id = ?
     ");
@@ -52,26 +58,38 @@ try {
     }
 
 
+    // -----------------------------
+    // Start transaction
+    // -----------------------------
     $conn->beginTransaction();
 
     $totalAmount = 0;
     $orderItems = [];
 
 
+    // -----------------------------
     // Process cart
+    // -----------------------------
     foreach ($cart as $item) {
 
         $productId = (int)($item["productId"] ?? 0);
         $productName = trim($item["productName"] ?? "");
         $quantity = (int)($item["quantity"] ?? 0);
+
+        // Price comes from localStorage/cart
         $rate = (float)($item["price"] ?? 0);
 
+
         if ($productId <= 0) {
-            throw new Exception("PRODUCT ERROR: invalid product ID.");
+            throw new Exception(
+                "PRODUCT ERROR: invalid product ID."
+            );
         }
 
         if ($productName === "") {
-            throw new Exception("PRODUCT ERROR: product name missing.");
+            throw new Exception(
+                "PRODUCT ERROR: product name missing."
+            );
         }
 
         if ($quantity <= 0) {
@@ -80,9 +98,17 @@ try {
             );
         }
 
+        if ($rate < 0) {
+            throw new Exception(
+                "PRICE ERROR: invalid price for " . $productName
+            );
+        }
+
+
         $amount = $rate * $quantity;
 
         $totalAmount += $amount;
+
 
         $orderItems[] = [
             "product_id" => $productId,
@@ -94,39 +120,38 @@ try {
     }
 
 
+    // -----------------------------
     // Insert order
+    // -----------------------------
     $stmt = $conn->prepare("
-        INSERT INTO orders
-        (
+        INSERT INTO orders (
             user_id,
             customer_name,
             customer_email,
-            customer_phone,
-            delivery_address,
             total_amount,
             status
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?)
     ");
 
     $stmt->execute([
         $user["id"],
         $user["name"],
         $user["email"],
-        $user["phone"],
-        $user["address"],
         $totalAmount,
         "Pending"
     ]);
 
 
+    // Get newly created order ID
     $orderId = $conn->lastInsertId();
 
 
+    // -----------------------------
     // Insert order items
+    // -----------------------------
     $stmt = $conn->prepare("
-        INSERT INTO order_items
-        (
+        INSERT INTO order_items (
             order_id,
             product_id,
             product_name,
@@ -151,9 +176,15 @@ try {
     }
 
 
+    // -----------------------------
+    // Complete transaction
+    // -----------------------------
     $conn->commit();
 
 
+    // -----------------------------
+    // Success response
+    // -----------------------------
     echo json_encode([
         "success" => true,
         "message" => "Order placed successfully.",
@@ -161,12 +192,16 @@ try {
         "total_amount" => $totalAmount
     ]);
 
+
 } catch (Throwable $e) {
 
+    // Rollback if something failed
     if (isset($conn) && $conn->inTransaction()) {
         $conn->rollBack();
     }
 
+
+    // Error response
     echo json_encode([
         "success" => false,
         "message" => $e->getMessage()
