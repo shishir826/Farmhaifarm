@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial;
+        background: #f7f9f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .payment-box {
+        width: 350px;
+        padding: 30px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px #0002;
+      }
+
+      .home {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #3a7d44;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .home:hover {
+        text-decoration: underline;
+      }
+
+      h2,
+      h3 {
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      .options {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .options button {
+        flex: 1;
+        padding: 12px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .options button:hover {
+        border-color: #3a7d44;
+      }
+
+      input {
+        width: 100%;
+        padding: 11px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .continue {
+        width: 100%;
+        padding: 12px;
+        border: 0;
+        border-radius: 5px;
+        background: #3a7d44;
+        color: white;
+        cursor: pointer;
+      }
+
+      .continue:hover {
+        background: #2c5f35;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="payment-box">
+      <a href="index.php" class="home">← Back to Home</a>
+
+      <h2>Payment</h2>
+
+      <div class="options">
+        <button onclick="selectPayment('eSewa')">eSewa</button>
+        <button onclick="selectPayment('Khalti')">Khalti</button>
+      </div>
+
+      <h3 id="title">Select Payment</h3>
+
+      <input type="text" placeholder="Mobile Number" />
+      <input type="password" placeholder="Password / MPIN" />
+
+      <button class="continue" onclick="continuePayment()">Continue</button>
+    </div>
+
+    <script>
+      let payment = "";
+
+      function selectPayment(method) {
+        payment = method;
+
+        document.getElementById("title").innerText = "Login with " + method;
+      }
+
+      function continuePayment() {
+        if (payment === "eSewa") window.location.href = "https://esewa.com.np/";
+        else if (payment === "Khalti")
+          window.location.href = "https://khalti.com/";
+        else alert("Please select a payment method.");
+      }
+    </script>
+  </body>
+</html>
