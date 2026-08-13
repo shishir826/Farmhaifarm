@@ -231,7 +231,7 @@
         </div>
 
         <div class="header-icons">
-          <a href="#">🛒 Cart</a>
+          <a href="cart.html">🛒 Cart</a>
           <a href="login.php">👤 Login</a>
           <a href="register.php">👤 SignUp</a>
         </div>
@@ -278,7 +278,11 @@
 
       <div class="shop-grid">
         <!-- Product 1 -->
-        <div class="product-card">
+        <div class="product-card"
+     data-product-id="1"
+     data-product-name="Cabbage"
+     data-price="60"
+     data-stock="20">
           <div class="product-img-wrap">
             <span class="stock-badge in-stock">In Stock</span>
             <img src="tasbir/today1.png" alt="Cabbage" />
@@ -294,12 +298,16 @@
               <span>1</span>
               <button aria-label="increase">+</button>
             </div>
-            <button class="add-cart-btn">Add to Cart</button>
+           <button class="add-cart-btn">Add to Cart</button>
           </div>
         </div>
 
         <!-- Product 2 -->
-        <div class="product-card">
+        <div class="product-card"
+     data-product-id="2"
+     data-product-name="Carrot"
+     data-price="80"
+     data-stock="20">
           <div class="product-img-wrap">
             <span class="stock-badge in-stock">In Stock</span>
             <img src="tasbir/today2.png" alt="Carrot" />
@@ -320,7 +328,11 @@
         </div>
 
         <!-- Product 3 -->
-        <div class="product-card">
+        <div class="product-card"
+     data-product-id="3"
+     data-product-name="Tomato"
+     data-price="90"
+     data-stock="5">
           <div class="product-img-wrap">
             <span class="stock-badge low-stock">Low Stock</span>
             <img src="tasbir/today3.png" alt="Tomato" />
@@ -341,7 +353,11 @@
         </div>
 
         <!-- Product 4 -->
-        <div class="product-card">
+        <div class="product-card"
+     data-product-id="4"
+     data-product-name="Potato"
+     data-price="55"
+     data-stock="20">
           <div class="product-img-wrap">
             <span class="stock-badge in-stock">In Stock</span>
             <img src="tasbir/today4.png" alt="Potato" />
@@ -362,7 +378,11 @@
         </div>
 
         <!-- Product 5 -->
-        <div class="product-card">
+       <div class="product-card"
+     data-product-id="5"
+     data-product-name="Spinach"
+     data-price="40"
+     data-stock="0">
           <div class="product-img-wrap">
             <span class="stock-badge out-stock">Out of Stock</span>
             <img src="tasbir/today5.png" alt="Spinach" />
@@ -383,7 +403,11 @@
         </div>
 
         <!-- Product 6 -->
-        <div class="product-card">
+        <div class="product-card"
+     data-product-id="6"
+     data-product-name="Cauliflower"
+     data-price="70"
+     data-stock="20">
           <div class="product-img-wrap">
             <span class="stock-badge in-stock">In Stock</span>
             <img src="tasbir/today1.png" alt="Cauliflower" />
@@ -453,7 +477,7 @@
     ></script>
 
     <!-- Quantity selector + cart script -->
-    <script src="cart.js">
+    <!-- <script src="cart.js">
       document.querySelectorAll(".product-card").forEach((card) => {
         const minus = card.querySelector('button[aria-label="decrease"]');
         const plus = card.querySelector('button[aria-label="increase"]');
@@ -479,6 +503,7 @@
           setTimeout(() => (addBtn.textContent = "Add to Cart"), 1200);
         });
       });
-    </script>
+    </script> -->
+    <script src="cart.js"></script>
   </body>
 </html>
