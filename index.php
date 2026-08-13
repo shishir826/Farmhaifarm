@@ -1,70 +1,153 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
+
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
     <title>Farm Fresh</title>
 
     <link rel="stylesheet" href="var.css" />
     <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
+</head>
+
+<body>
+
     <!-- Header -->
     <header>
-      <!-- Top Bar -->
-      <div class="top-bar">
-        <div class="top-left">
-          <span>📞 +977 9812397426</span>
-          <span>✉ support@farmfresh.com</span>
+
+        <!-- Top Bar -->
+        <div class="top-bar">
+
+            <div class="top-left">
+
+                <span>📞 +977 9812397426</span>
+
+                <span>✉ support@farmfresh.com</span>
+
+            </div>
+
+            <div class="top-right">
+
+                <a href="#">
+                    🚚 Track Order
+                </a>
+
+            </div>
+
         </div>
 
-        <div class="top-right">
-          <a href="#">🚚 Track Order</a>
+
+        <div id="mainheader">
+
+            <div class="logo">
+
+                <a href="index.php">
+                    🌱 FarmFresh
+                </a>
+            </div>
+
+
+            <div class="search-bar">
+                <input
+                    type="text"
+                    placeholder="Search fresh fruits & vegetables"
+                />
+                <button>
+                    🔍
+                </button>
+
+            </div>
+
+
+            <div class="header-icons">
+
+                <a href="#">
+                    🛒 Cart
+                </a>
+
+
+                <?php if (isset($_SESSION["user_id"])): ?>
+
+                    <span class="welcome-user">
+                        👋 Welcome,
+                        <?php
+                        echo htmlspecialchars($_SESSION["user_name"]);
+                        ?>
+                    </span>
+
+                    <a href="logout.php">
+                        Logout
+                    </a>
+
+
+                <?php else: ?>
+
+                    <a href="login.php">
+                        👤 Login
+                    </a>
+
+                    <a href="register.php">
+                        👤 SignUp
+                    </a>
+
+                <?php endif; ?>
+
+            </div>
+
         </div>
-      </div>
-      <div id="mainheader">
-        <div class="logo">
-          <a href="index.html">🌱 FarmFresh</a>
-        </div>
 
-        <div class="search-bar">
-          <input type="text" placeholder="Search fresh fruits & vegetables" />
-          <button>🔍</button>
-        </div>
 
-        <div class="header-icons">
-          <a href="#">🛒 Cart</a>
-          <a href="login.php">👤 Login</a>
-          <a href="register.php">👤 SignUp</a>
-        </div>
-      </div>
+        <!-- Navigation -->
+        <nav id="main-nav">
 
-      <!-- Navigation -->
-      <nav id="main-nav">
-        <div class="nav-container">
-          <ul class="nav-menu">
-            <li>
-              <a href="index.html" class="active">Home</a>
-            </li>
+            <div class="nav-container">
 
-            <li>
-              <a href="shop.html">Shop</a>
-            </li>
+                <ul class="nav-menu">
 
-            <li>
-              <a href="about.html">About Us</a>
-            </li>
+                    <li>
+                        <a href="index.php" class="active">
+                            Home
+                        </a>
+                    </li>
 
-            <li>
-              <a href="contact.html">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+                    <li>
+                        <a href="shop.html">
+                            Shop
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
     </header>
 
-    <!-- Banner Section -->
+<!-- Banner Section -->
     <section class="banner" id="index">
       <div class="content">
         <h3>Skip the market! Choose <span>Fresh!</span></h3>
@@ -96,8 +179,8 @@
           </p>
 
           <h5>700kg sold this season</h5>
-          <br>
-          <a href="#" class="bttn">Place Order</a>
+
+          <a href="#" class="btn">Add to cart</a>
         </div>
 
         <!-- Product 2 -->
@@ -111,9 +194,9 @@
             <span>Express Delivery</span>
           </p>
 
-          <h5>700kg sold this season</h5> <br>
+          <h5>700kg sold this season</h5>
 
-          <a href="#" class="bttn">Place Order</a>
+          <a href="#" class="btn">Add to cart</a>
         </div>
 
         <!-- Product 3 -->
@@ -127,9 +210,9 @@
             <span>Express Delivery</span>
           </p>
 
-          <h5>700kg sold this season</h5> <br>
+          <h5>700kg sold this season</h5>
 
-          <a href="#" class="bttn">Place Order</a>
+          <a href="#" class="btn">Add to cart</a>
         </div>
 
         <!-- Product 4 -->
@@ -143,12 +226,12 @@
             <span>Express Delivery</span>
           </p>
 
-          <h5>700kg sold this season</h5> <br>
+          <h5>700kg sold this season l</h5>
 
-          <a href="#" class="bttn">Place Order</a>
+          <a href="#" class="btn">Add to cart</a>
         </div>
 
-        <!-- Product 5 -->                    
+        <!-- Product 5 -->
         <div class="box5">
           <img src="tasbir/today5.png" alt="Fresh cabbage" />
 
@@ -159,31 +242,12 @@
             <span>Express Delivery</span>
           </p>
 
-          <h5>700kg sold this season</h5> <br>
+          <h5>700kg sold this season</h5>
 
-          <a href="#" class="bttn">Place Order</a>
-        </div>
-      
-<!-- Product 6 -->                    
-        <div class="box6">
-          <img src="tasbir/today6.png" alt="Fresh cabbage" />
-
-          <h3>Cabbage (बन्दा)</h3>
-
-          <p>
-            रु60/-
-            <span>Express Delivery</span>
-          </p>
-
-          <h5>700kg sold this season</h5> <br>
-
-          <a href="#" class="bttn">Place Order</a>
+          <a href="#" class="btn">Add to cart</a>
         </div>
       </div>
-
     </section>
-
-    
 
     <!-- Footer -->
     <footer class="footer">
@@ -223,6 +287,7 @@
         <p>© 2026 FarmFresh. All Rights Reserved.</p>
 
         <p>Farm Fresh Natural 🌱</p>
+        <p>hora daju here and ther handfuld sdf</p>
       </div>
     </footer>
 
