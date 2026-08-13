@@ -1,200 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Cart - FarmFresh</title>
 
-    <link rel="stylesheet" href="var.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="var.css" />
+    <link rel="stylesheet" href="style.css" />
 
     <style>
+      .cart-section {
+        padding: 50px 8%;
+        background: #f4faf4;
+        min-height: 70vh;
+      }
 
-        .cart-section {
-            padding: 50px 8%;
-            background: #f4faf4;
-            min-height: 70vh;
-        }
+      .cart-section h1 {
+        text-align: center;
+        color: #1b3a1e;
+        margin-bottom: 30px;
+      }
 
-        .cart-section h1 {
-            text-align: center;
-            color: #1b3a1e;
-            margin-bottom: 30px;
-        }
+      .cart-container {
+        max-width: 900px;
+        margin: auto;
+      }
 
-        .cart-container {
-            max-width: 900px;
-            margin: auto;
-        }
+      .cart-item {
+        background: white;
+        border: 1px solid #e0efe0;
+        border-radius: 12px;
+        padding: 18px;
+        margin-bottom: 15px;
 
-        .cart-item {
-            background: white;
-            border: 1px solid #e0efe0;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
+      .cart-item-info h3 {
+        margin-bottom: 5px;
+        color: #1b3a1e;
+      }
 
-        .cart-item-info h3 {
-            margin-bottom: 5px;
-            color: #1b3a1e;
-        }
+      .cart-item-info p {
+        color: #5a6b5a;
+      }
 
-        .cart-item-info p {
-            color: #5a6b5a;
-        }
+      .cart-quantity {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-        .cart-quantity {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+      .cart-quantity button {
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 6px;
+        background: #eef7ee;
+        color: #2e7d32;
+        font-weight: bold;
+        cursor: pointer;
+      }
 
-        .cart-quantity button {
-            width: 30px;
-            height: 30px;
-            border: none;
-            border-radius: 6px;
-            background: #eef7ee;
-            color: #2e7d32;
-            font-weight: bold;
-            cursor: pointer;
-        }
+      .cart-quantity span {
+        min-width: 25px;
+        text-align: center;
+        font-weight: bold;
+      }
 
-        .cart-quantity span {
-            min-width: 25px;
-            text-align: center;
-            font-weight: bold;
-        }
+      .cart-item-price {
+        font-weight: bold;
+        color: #2e7d32;
+      }
 
-        .cart-item-price {
-            font-weight: bold;
-            color: #2e7d32;
-        }
+      .remove-btn {
+        border: none;
+        background: #ffebee;
+        color: #c62828;
+        padding: 7px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
 
-        .remove-btn {
-            border: none;
-            background: #ffebee;
-            color: #c62828;
-            padding: 7px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+      .cart-summary {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        margin-top: 25px;
+        border: 1px solid #e0efe0;
+      }
 
-        .cart-summary {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 25px;
-            border: 1px solid #e0efe0;
-        }
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
 
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
+      .summary-total {
+        border-top: 1px solid #ddd;
+        padding-top: 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
 
-        .summary-total {
-            border-top: 1px solid #ddd;
-            padding-top: 15px;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
+      .buy-btn {
+        width: 100%;
+        margin-top: 20px;
+        padding: 13px;
+        background: #2e7d32;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+      }
 
-        .buy-btn {
-            width: 100%;
-            margin-top: 20px;
-            padding: 13px;
-            background: #2e7d32;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .empty-cart {
-            text-align: center;
-            padding: 50px;
-            color: #5a6b5a;
-        }
-
+      .empty-cart {
+        text-align: center;
+        padding: 50px;
+        color: #5a6b5a;
+      }
     </style>
-</head>
+  </head>
 
-
-<body>
-
+  <body>
     <header>
-
-        <div id="mainheader">
-
-            <div class="logo">
-                <a href="index.html">🌱 FarmFresh</a>
-            </div>
-
-            <div class="header-icons">
-
-                <a href="shop.html">
-                    🛍️ Shop
-                </a>
-
-                <a href="cart.html">
-                    🛒 Cart
-                </a>
-
-                <a href="login.php">
-                    👤 Login
-                </a>
-
-            </div>
-
+      <div id="mainheader">
+        <div class="logo">
+          <a href="index.html">🌱 FarmFresh</a>
         </div>
 
+        <div class="header-icons">
+          <a href="shop.html"> 🛍️ Shop </a>
+
+          <a href="login.php"> 👤 Login </a>
+        </div>
+      </div>
     </header>
 
-
     <section class="cart-section">
+      <h1>🛒 Your Cart</h1>
 
-        <h1>🛒 Your Cart</h1>
+      <div class="cart-container">
+        <div id="cartItems"></div>
 
-        <div class="cart-container">
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Items</span>
+            <span id="cartItemCount">0</span>
+          </div>
 
-            <div id="cartItems"></div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="cartTotal">रु0</span>
+          </div>
 
-            <div class="cart-summary">
-
-                <div class="summary-row">
-                    <span>Items</span>
-                    <span id="cartItemCount">0</span>
-                </div>
-
-                <div class="summary-row summary-total">
-                    <span>Total</span>
-                    <span id="cartTotal">रु0</span>
-                </div>
-
-                <button
-                    class="buy-btn"
-                    id="buyButton">
-                    Buy Now
-                </button>
-
-            </div>
-
+          <button class="buy-btn" id="buyButton">
+            <a href="payment.html">Buy Now</a>
+          </button>
         </div>
-
+      </div>
     </section>
-
-</body>
-<script src="cart.js"></script>
+  </body>
+  <script src="cart.js"></script>
 </html>
