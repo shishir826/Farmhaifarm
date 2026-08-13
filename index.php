@@ -26,27 +26,6 @@ session_start();
     <!-- Header -->
     <header>
 
-        <!-- Top Bar -->
-        <div class="top-bar">
-
-            <div class="top-left">
-
-                <span>📞 +977 9812397426</span>
-
-                <span>✉ support@farmfresh.com</span>
-
-            </div>
-
-            <div class="top-right">
-
-                <a href="#">
-                    🚚 Track Order
-                </a>
-
-            </div>
-
-        </div>
-
 
         <div id="mainheader">
 
@@ -163,7 +142,7 @@ session_start();
         </a>
       </div>
     </section>
-    <section class="picked" id="picked">
+       <section class="picked" id="picked">
       <h3 class="today">Picked Today</h3>
 
       <div class="box-container">
@@ -179,8 +158,8 @@ session_start();
           </p>
 
           <h5>700kg sold this season</h5>
-
-          <a href="#" class="btn">Add to cart</a>
+          <br />
+          <a href="shop.html" class="bttn">Place Order</a>
         </div>
 
         <!-- Product 2 -->
@@ -195,8 +174,9 @@ session_start();
           </p>
 
           <h5>700kg sold this season</h5>
+          <br />
 
-          <a href="#" class="btn">Add to cart</a>
+          <a href="shop.html" class="bttn">Place Order</a>
         </div>
 
         <!-- Product 3 -->
@@ -211,8 +191,9 @@ session_start();
           </p>
 
           <h5>700kg sold this season</h5>
+          <br />
 
-          <a href="#" class="btn">Add to cart</a>
+          <a href="shop.html" class="bttn">Place Order</a>
         </div>
 
         <!-- Product 4 -->
@@ -226,9 +207,10 @@ session_start();
             <span>Express Delivery</span>
           </p>
 
-          <h5>700kg sold this season l</h5>
+          <h5>700kg sold this season</h5>
+          <br />
 
-          <a href="#" class="btn">Add to cart</a>
+          <a href="shop.html" class="bttn">Place Order</a>
         </div>
 
         <!-- Product 5 -->
@@ -243,11 +225,30 @@ session_start();
           </p>
 
           <h5>700kg sold this season</h5>
+          <br />
 
-          <a href="#" class="btn">Add to cart</a>
+          <a href="shop.html" class="bttn">Place Order</a>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="box6">
+          <img src="tasbir/today6.png" alt="Fresh cabbage" />
+
+          <h3>Cabbage (बन्दा)</h3>
+
+          <p>
+            रु60/-
+            <span>Express Delivery</span>
+          </p>
+
+          <h5>700kg sold this season</h5>
+          <br />
+
+          <a href="shop.html" class="bttn">Place Order</a>
         </div>
       </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="footer">
