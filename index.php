@@ -51,7 +51,7 @@ session_start();
 
             <div class="header-icons">
 
-                <a href="#">
+                <a href="cart.html">
                     🛒 Cart
                 </a>
 
